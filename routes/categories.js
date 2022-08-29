@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-// Get categories list
+// List categories
 router.get("/", (req, res, next) => {
   console.debug(new Date(req.requestTime).toString());
-  res.end(`GET categories list.`);
+  const page = req.query.page || 1;
+  const limit = req.query.limit || 15;
+  res.end(`GET categories list. \nPage: ${page}. Limit: ${limit}.`);
 });
 
 // Get a category by id

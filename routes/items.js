@@ -5,7 +5,9 @@ const router = express.Router();
 // Get items list.
 router.get("/", (req, res, next) => {
   console.debug(new Date(req.requestTime).toString());
-  res.end(`GET items list.`);
+  const page = req.query.page || 1;
+  const limit = req.query.limit || 15;
+  res.end(`GET items list. \nPage: ${page}. Limit: ${limit}.`);
 });
 
 // Get an item by id.
