@@ -1,4 +1,4 @@
-// var uuid = require('node-uuid')
+const { v4: uuidv4 } = require("uuid");
 const express = require("express");
 const router = express.Router();
 
@@ -8,23 +8,35 @@ router.get("/", (req, res, next) => {
 });
 
 // Get an item by id.
-router.get("/:id", (req, res, next) => {
-  res.end("GET item by id.");
+router.get("/:itemId", (req, res, next) => {
+  res.end(`GET item by id. \nItem Id: ${req.params.itemId}`);
 });
 
 // Create an item.
 router.post("/", (req, res, next) => {
-  res.end("POST - Create an item.");
+  const newProduct = {
+    id: 1,
+    uuid: uuidv4(),
+    ...req.body,
+  };
+  // res.end("POST - Create an item.");
+  res.json(newProduct);
 });
 
 // Update an item.
-router.put("/:id", (req, res, next) => {
-  res.end("PUT - Update an item.");
+router.put("/:itemId", (req, res, next) => {
+  const updatedProduct = {
+    id: parseInt(req.params.itemId),
+    uuid: uuidv4(),
+    ...req.body,
+  };
+  // res.end(`PUT - Update an item. \nItem Id: ${req.params.itemId}`);
+  res.json(updatedProduct);
 });
 
 // Delete an item.
-router.delete("/:id", (req, res, next) => {
-  res.end("DELETE an item.");
+router.delete("/:itemId", (req, res, next) => {
+  res.end(`DELETE an item. \nItem Id: ${req.params.itemId}`);
 });
 
 module.exports = router;

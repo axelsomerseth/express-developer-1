@@ -7,23 +7,34 @@ router.get("/", (req, res, next) => {
 });
 
 // Get a category by id
-router.get("/:id", (req, res, next) => {
-  res.end("GET a category by id.");
+router.get("/:categoryId", (req, res, next) => {
+  res.end(`GET a category by id. \nCategory Id: ${req.params.categoryId}`);
 });
 
 // Create a category
 router.post("/", (req, res, next) => {
-  res.end("POST - Create a category.");
+  const newCategory = {
+    id: 1,
+    ...req.body,
+  };
+
+  // res.end("POST - Create a category.");
+  res.json(newCategory);
 });
 
 // Update a category
-router.put("/:id", (req, res, next) => {
-  res.end("PUT - Update a category.");
+router.put("/:categoryId", (req, res, next) => {
+  const updatedCategory = {
+    id: parseInt(req.params.categoryId),
+    ...req.body,
+  };
+  // res.end(`PUT - Update a category. \nCategory Id: ${req.params.categoryId}`);
+  res.json(updatedCategory);
 });
 
 // Delete a category
-router.delete("/:id", (req, res, next) => {
-  res.end("DELETE a category.");
+router.delete("/:categoryId", (req, res, next) => {
+  res.end(`DELETE a category. \nCategory Id: ${req.params.categoryId}`);
 });
 
 module.exports = router;
