@@ -1,0 +1,16 @@
+{
+  "name": "express-developer-1",
+  "version": "1.0.0",
+  "description": "A developer who can implement build backend applications using NodeJS and Express.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Axel Somerseth Cordova <axelsomerseth@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
