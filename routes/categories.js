@@ -3,7 +3,8 @@ const router = express.Router();
 
 // Get categories list
 router.get("/", (req, res, next) => {
-  res.end("GET categories list.");
+  console.debug(new Date(req.requestTime).toString());
+  res.end(`GET categories list.`);
 });
 
 // Get a category by id

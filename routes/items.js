@@ -4,7 +4,8 @@ const router = express.Router();
 
 // Get items list.
 router.get("/", (req, res, next) => {
-  res.end("GET items list.");
+  console.debug(new Date(req.requestTime).toString());
+  res.end(`GET items list.`);
 });
 
 // Get an item by id.

@@ -6,8 +6,12 @@ const logger = require("morgan");
 const indexRouter = require("./routes/index");
 const itemsRouter = require("./routes/items");
 const categoriesRouter = require("./routes/categories");
+const requestTime = require("./middlewares/requestTime");
 
 const app = express();
+
+// custom middleware
+app.use(requestTime);
 
 // middleware (goes first than routes)
 app.use(logger("dev"));
